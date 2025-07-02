@@ -1,2 +1,2 @@
 # Langchain_Models
-Hey, Ya this is about the LangChain Models. 
+This is about LangChain Models component. 
