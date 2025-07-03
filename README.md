@@ -20,13 +20,11 @@ The process involves:
 
 ### 1. Vector Representation
 
-Each document $d_i$ and query $q$ is passed through a transformer model $f$, which encodes the text into an embedding vector:
+Each document `d_i` and query `q` is passed through a transformer model `f`, which encodes the text into an embedding vector:
 
-$$
-\vec{d_i} = f(d_i), \quad \vec{q} = f(q)
-$$
+    d_i = f(d_i),   q = f(q)
 
-Where $f$ maps raw text to $\mathbb{R}^{384}$ using a pre-trained model.
+Where `f` maps raw text to ℝ^384 using a pre-trained model.
 
 ---
 
@@ -34,13 +32,9 @@ Where $f$ maps raw text to $\mathbb{R}^{384}$ using a pre-trained model.
 
 Similarity between query and document embeddings is calculated as:
 
-$$
-\text{cos\_sim}(\vec{q}, \vec{d_i}) = \frac{\vec{q} \cdot \vec{d_i}}{\|\vec{q}\| \|\vec{d_i}\|}
-$$
+    cos_sim(q, d_i) = (q · d_i) / (||q|| * ||d_i||)
 
 This metric reflects the angle between vectors. Higher values indicate greater similarity in meaning.
-
----
 
 ### 3. Ranking Mechanism
 
