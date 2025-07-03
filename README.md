@@ -78,7 +78,7 @@ similarity_score: 0.7823
 Install required libraries:
 
 ```bash
-pip install sentence-transformers scikit-learn numpy
+pip install -r requirements.txt
 ```
 
 ---
@@ -86,18 +86,7 @@ pip install sentence-transformers scikit-learn numpy
 ## Run the Script
 
 ```bash
-python similarity_search.py
+python /Users/manavdesai/Desktop/GitHub/Langchain_Models/document_search_app.py.py
 ```
-
----
-
-## Notes
-
-This implementation is intended to be simple, interpretable, and modular — useful as a foundation for larger applications such as:
-
-* AI question-answering systems
-* Legal or medical document retrieval
-* Personalized content recommendation
-* Chatbot memory retrieval
 
 ---
