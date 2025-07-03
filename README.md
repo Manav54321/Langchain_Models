@@ -45,15 +45,6 @@ With a similarity score (e.g., 0.86).
 
 ---
 
-## Tech Stack
-
-* `langchain_huggingface` for transformer-based embeddings
-* `scikit-learn` for cosine similarity
-* `streamlit` for the user interface
-* `matplotlib` for basic vector visualization
-
----
-
 ## Setup
 
 Clone the repo and install dependencies:
@@ -68,18 +59,6 @@ Then run the app:
 
 ```bash
 streamlit run app.py
-```
-
----
-
-## File Structure
-
-```
-.
-├── app.py                # Main Streamlit application
-├── README.md             # Project description and documentation
-├── requirements.txt      # Python dependencies
-└── assets/               # (Optional) images or static files
 ```
 
 ---
