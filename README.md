@@ -1,135 +1,85 @@
-Here’s a 🔬 **researcher-style, beautifully structured `README.md`** for your project. It blends clarity, academic tone, and visuals—while staying practical for devs or learners exploring vector search or embeddings.
+# Document Similarity Search
+
+This project demonstrates how vector embeddings and cosine similarity can be used to perform semantic document retrieval. It uses HuggingFace sentence transformers to convert both queries and documents into dense vector representations and then compares them using cosine similarity to find the most semantically relevant result.
 
 ---
 
-## 🧠 Document Similarity Search Using Embeddings
+## Overview
 
-A Streamlit-powered demo that showcases how **vector embeddings** and **cosine similarity** can be used to find semantically similar documents — powered by Hugging Face transformers.
-
----
-
-### 📌 Overview
-
-Traditional keyword-based search often fails to capture meaning. This project demonstrates a modern approach — **Document Similarity Search** — where both documents and queries are converted into high-dimensional **vector embeddings**. These embeddings represent the *meaning* of text, enabling machines to compare based on context rather than just keywords.
+Traditional search methods rely on keyword matching, which often fails to understand the meaning behind a query. Document similarity search addresses this by embedding both documents and queries into high-dimensional vector space. These embeddings capture the semantic meaning of the text, allowing the system to find the most contextually relevant match.
 
 ---
 
-### 🔍 How It Works
+## How It Works
 
-#### 1. **Embedding the Text**
+1. **Embeddings**
+   All documents and the input query are passed through a pre-trained transformer model to generate dense vector embeddings. These vectors numerically represent the semantic content of the text.
 
-Using [`sentence-transformers/all-MiniLM-L6-v2`](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2), each document and the user query are converted into vector representations:
+2. **Similarity Calculation**
+   Using cosine similarity, the system measures how close the query vector is to each document vector. This results in a similarity score for each document.
 
-<div align="center">
-  <img src="https://raw.githubusercontent.com/your-username/your-repo/main/assets/embedding_diagram.png" alt="Embedding diagram" width="500"/>
-</div>
-
-These vectors live in a high-dimensional space (\~384 dimensions), where similar meanings are closer together.
-
-#### 2. **Cosine Similarity**
-
-To compare the vectors, we use **cosine similarity**:
-
-$$
-\text{similarity}(A, B) = \frac{A \cdot B}{\|A\| \|B\|}
-$$
-
-This gives a score from -1 to 1. The higher the score, the more similar the meanings.
-
-#### 3. **Result Ranking**
-
-The top-matching document is selected based on similarity, and returned to the user.
+3. **Best Match**
+   The document with the highest similarity score is selected and returned as the most relevant response to the user's query.
 
 ---
 
-### 📊 Visual Representation
+## Example Query
 
-The following plot shows how documents and the user query are embedded and compared:
+Given a query like:
+`"Who's Ana de Armas?"`
 
-<div align="center">
-  <img src="https://raw.githubusercontent.com/your-username/your-repo/main/assets/vector_space_projection.png" alt="Vector space" width="600"/>
-</div>
+The system returns:
+`"Ana de Armas exudes natural elegance and allure — her soft features, accent, and poise make her captivating on and off screen."`
 
-* 🔵 = Document vectors
-* 🔴 = Query vector
-* Proximity = Semantic similarity
-
-We use **PCA** or **2D projection** for visualization.
+With a similarity score (e.g., 0.86).
 
 ---
 
-### ⚙️ Tech Stack
+## Use Cases
 
-| Component                           | Description                                   |
-| ----------------------------------- | --------------------------------------------- |
-| `LangChain + HuggingFaceEmbeddings` | Converts text to dense vector representations |
-| `Scikit-learn`                      | Calculates cosine similarity between vectors  |
-| `Streamlit`                         | Provides a lightweight, interactive UI        |
-| `Matplotlib`                        | Visualizes vector distributions               |
+* AI chat interfaces
+* Smart document Q\&A systems
+* Semantic product or content recommendation
+* Legal or biomedical document retrieval
+* Educational assistants for large textbooks or articles
 
 ---
 
-### 🚀 How to Run
+## Tech Stack
+
+* `langchain_huggingface` for transformer-based embeddings
+* `scikit-learn` for cosine similarity
+* `streamlit` for the user interface
+* `matplotlib` for basic vector visualization
+
+---
+
+## Setup
+
+Clone the repo and install dependencies:
 
 ```bash
 git clone https://github.com/your-username/document-similarity-search
 cd document-similarity-search
 pip install -r requirements.txt
+```
+
+Then run the app:
+
+```bash
 streamlit run app.py
 ```
 
-> **Note**: Make sure Python 3.8+ is installed, along with `sentence-transformers`.
-
 ---
 
-### 🧪 Example Query
-
-```text
-"Who's Ana de Armas?"
-```
-
-🟰 Returns the document:
-
-> *"Ana de Armas exudes natural elegance and allure — her soft features, accent, and poise make her captivating on and off screen."*
-
-Along with a similarity score like: `0.86`
-
----
-
-### 💡 Real-World Applications
-
-* **AI Chatbots**: Retrieve context-aware responses
-* **PDF Q\&A**: Find the most relevant section in a document
-* **E-commerce**: Recommend similar products
-* **Legal/Medical Search**: Extract relevant cases or diagnoses
-
----
-
-### 🧭 File Structure
+## File Structure
 
 ```
 .
-├── app.py                  # Main Streamlit app
-├── README.md               # This file
-├── requirements.txt        # All dependencies
-└── assets/
-    ├── embedding_diagram.png
-    └── vector_space_projection.png
+├── app.py                # Main Streamlit application
+├── README.md             # Project description and documentation
+├── requirements.txt      # Python dependencies
+└── assets/               # (Optional) images or static files
 ```
 
 ---
-
-### 👨‍🔬 Research-Driven Motivation
-
-This project is inspired by foundational ideas in **semantic search**, **transformer-based embeddings**, and **information retrieval**. It reflects the transition from surface-level keyword matching to meaning-aware vector search.
-
-
----
-
-Let me know if you want:
-
-* A **GIF-style demo** preview embedded
-* A lighter, Gen-Z builder tone version
-* A badge-packed top header (stars, license, Streamlit live demo link)
-
-I'll even give you the markdown with image placeholders ready for your screenshots.
