@@ -56,17 +56,6 @@ document_index, score = sorted_scores[-1]
 
 ---
 
-## File Structure
-
-```
-.
-├── similarity_search.py   # Core script for computing semantic similarity
-├── requirements.txt       # Python dependencies
-├── README.md              # Project documentation
-```
-
----
-
 ## Example Run
 
 ```python
