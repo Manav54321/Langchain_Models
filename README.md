@@ -1,12 +1,18 @@
-# Document Similarity Search
+# Document Similarity Search with Sentence Transformers
 
-This project demonstrates how vector embeddings and cosine similarity can be used to perform semantic document retrieval. It uses HuggingFace sentence transformers to convert both queries and documents into dense vector representations and then compares them using cosine similarity to find the most semantically relevant result.
+This repository presents a minimal and effective implementation of semantic document retrieval using vector embeddings and cosine similarity. The system is designed to identify the document that best matches the meaning of a user's input query.
 
 ---
 
 ## Overview
 
-Traditional search methods rely on keyword matching, which often fails to understand the meaning behind a query. Document similarity search addresses this by embedding both documents and queries into high-dimensional vector space. These embeddings capture the semantic meaning of the text, allowing the system to find the most contextually relevant match.
+Traditional search methods rely on keyword overlap. This method improves upon that by leveraging **pretrained transformer-based sentence embeddings**, allowing retrieval based on *semantic similarity* rather than lexical similarity.
+
+The process involves:
+
+* Embedding each document and query into a high-dimensional space.
+* Computing cosine similarity between the query vector and document vectors.
+* Returning the document with the highest semantic alignment.
 
 ---
 
@@ -45,6 +51,15 @@ With a similarity score (e.g., 0.86).
 
 ---
 
+## Tech Stack
+
+* `langchain_huggingface` for transformer-based embeddings
+* `scikit-learn` for cosine similarity
+* `streamlit` for the user interface
+* `matplotlib` for basic vector visualization
+
+---
+
 ## Setup
 
 Clone the repo and install dependencies:
@@ -59,6 +74,18 @@ Then run the app:
 
 ```bash
 streamlit run app.py
+```
+
+---
+
+## File Structure
+
+```
+.
+├── app.py                # Main Streamlit application
+├── README.md             # Project description and documentation
+├── requirements.txt      # Python dependencies
+└── assets/               # (Optional) images or static files
 ```
 
 ---
