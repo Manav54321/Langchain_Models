@@ -29,7 +29,7 @@ Given a query like:
 `"Who's Ana de Armas?"`
 
 The system returns:
-`"Ana de Armas exudes natural elegance and allure — her soft features, accent, and poise make her captivating on and off screen."`
+`"Ana de Armas exudes natural elegance and allure — her features, accent, and poise make her captivating on and off screen."`
 
 With a similarity score (e.g., 0.86).
 
