@@ -16,65 +16,49 @@ The process involves:
 
 ---
 
-## How It Works
+## Mathematical Foundation
 
-1. **Embeddings**
-   All documents and the input query are passed through a pre-trained transformer model to generate dense vector embeddings. These vectors numerically represent the semantic content of the text.
+### 1. Vector Representation
 
-2. **Similarity Calculation**
-   Using cosine similarity, the system measures how close the query vector is to each document vector. This results in a similarity score for each document.
+Each document $d_i$ and query $q$ is passed through a transformer model $f$, which encodes the text into an embedding vector:
 
-3. **Best Match**
-   The document with the highest similarity score is selected and returned as the most relevant response to the user's query.
+$$
+\vec{d_i} = f(d_i), \quad \vec{q} = f(q)
+$$
 
----
-
-## Example Query
-
-Given a query like:
-`"Who's Ana de Armas?"`
-
-The system returns:
-`"Ana de Armas exudes natural elegance and allure — her features, accent, and poise make her captivating on and off screen."`
-
-With a similarity score (e.g., 0.86).
+Where $f$ maps raw text to $\mathbb{R}^{384}$ using a pre-trained model.
 
 ---
 
-## Use Cases
+### 2. Cosine Similarity
 
-* AI chat interfaces
-* Smart document Q\&A systems
-* Semantic product or content recommendation
-* Legal or biomedical document retrieval
-* Educational assistants for large textbooks or articles
+Similarity between query and document embeddings is calculated as:
 
----
+$$
+\text{cos\_sim}(\vec{q}, \vec{d_i}) = \frac{\vec{q} \cdot \vec{d_i}}{\|\vec{q}\| \|\vec{d_i}\|}
+$$
 
-## Tech Stack
-
-* `langchain_huggingface` for transformer-based embeddings
-* `scikit-learn` for cosine similarity
-* `streamlit` for the user interface
-* `matplotlib` for basic vector visualization
+This metric reflects the angle between vectors. Higher values indicate greater similarity in meaning.
 
 ---
 
-## Setup
+### 3. Ranking Mechanism
 
-Clone the repo and install dependencies:
+All cosine scores are computed, sorted, and the top document is returned:
 
-```bash
-git clone https://github.com/your-username/document-similarity-search
-cd document-similarity-search
-pip install -r requirements.txt
+```python
+sorted_scores = sorted(enumerate(scores), key=lambda x: x[1])
+document_index, score = sorted_scores[-1]
 ```
 
-Then run the app:
+---
 
-```bash
-streamlit run app.py
-```
+## Embedding Model
+
+* **Model Name**: `sentence-transformers/all-MiniLM-L6-v2`
+* **Architecture**: Distilled bi-encoder (Transformer-based)
+* **Embedding Dimension**: 384
+* **Provider**: HuggingFace Model Hub
 
 ---
 
@@ -82,10 +66,54 @@ streamlit run app.py
 
 ```
 .
-├── app.py                # Main Streamlit application
-├── README.md             # Project description and documentation
-├── requirements.txt      # Python dependencies
-└── assets/               # (Optional) images or static files
+├── similarity_search.py   # Core script for computing semantic similarity
+├── requirements.txt       # Python dependencies
+├── README.md              # Project documentation
 ```
+
+---
+
+## Example Run
+
+```python
+query = "Kylie"
+```
+
+Returns:
+
+```
+query: Kylie
+best_match: Kylie Jenner commands attention with her signature style, glamorous beauty, and trendsetting influence on social media.
+similarity_score: 0.7823
+```
+
+---
+
+## Dependencies
+
+Install required libraries:
+
+```bash
+pip install sentence-transformers scikit-learn numpy
+```
+
+---
+
+## Run the Script
+
+```bash
+python similarity_search.py
+```
+
+---
+
+## Notes
+
+This implementation is intended to be simple, interpretable, and modular — useful as a foundation for larger applications such as:
+
+* AI question-answering systems
+* Legal or medical document retrieval
+* Personalized content recommendation
+* Chatbot memory retrieval
 
 ---
