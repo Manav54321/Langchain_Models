@@ -69,6 +69,7 @@ query: Kylie
 best_match: Kylie Jenner commands attention with her signature style, glamorous beauty, and trendsetting influence on social media.
 similarity_score: 0.7823
 ```
+![Screenshot 2025-07-03 at 3 18 51 PM](https://github.com/user-attachments/assets/0c48f091-cf57-44b9-800c-9b3f757cb3c2)
 
 ---
 
